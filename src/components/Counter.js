@@ -13,12 +13,16 @@ const Counter = () => {
       <div className="counter_divider"></div>
       <div className="counter_footer">
         <button className="start_button">
-          <img src={playPic} className="playPic" alt="counter play button" />
+          <img
+            src={playPic}
+            className="counter_playPic"
+            alt="counter play button"
+          />
         </button>
         <button className="cancle_button">
           <img
             src={canclePic}
-            className="canclePic"
+            className="counter_canclePic"
             alt="counter cancle button"
           />
         </button>
