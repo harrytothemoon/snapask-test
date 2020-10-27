@@ -6,11 +6,11 @@ import RightNavbar from "./components/RightNavbar";
 function App() {
   return (
     <div className="App">
-      <div className="App-name">
+      <div className="App_name">
         <h2>WEEK 1</h2>
         <h1>POMODOR</h1>
       </div>
-      <div className="App-content">
+      <div className="App_content">
         <TodoList />
         <Counter />
         <RightNavbar />

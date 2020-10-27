@@ -1,16 +1,27 @@
 import React from "react";
+import counterPic from "../image/Group_39.png";
+import playPic from "../image/play.png";
+import canclePic from "../image/cancle.png";
 
 const Counter = () => {
   return (
-    <div className="counter-container">
+    <div className="counter_container">
       <div className="timer">
-        <div className="select-time">
-          <input type="text" className="input-time" placeholder="25:00" />
-        </div>
+        <img src={counterPic} className="counterPic" alt="counter background" />
+        <h1 className="input_time">25:00</h1>
       </div>
-      <div>
-        <button className="start-button">Start</button>
-        <button className="top-button">Stop</button>
+      <div className="counter_divider"></div>
+      <div className="counter_footer">
+        <button className="start_button">
+          <img src={playPic} className="playPic" alt="counter play button" />
+        </button>
+        <button className="cancle_button">
+          <img
+            src={canclePic}
+            className="canclePic"
+            alt="counter cancle button"
+          />
+        </button>
       </div>
     </div>
   );

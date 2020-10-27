@@ -11,7 +11,7 @@ body {
   margin-top: 20px;
 }
 
-.App-name {
+.App_name {
   display: flex;
   flex-direction: column;
   writing-mode: vertical-rl;
@@ -19,8 +19,8 @@ body {
   color: #ffe5b5;
 }
 
-.App-content {
-  width: 1300px;
+.App_content {
+  width: 1200px;
   height: 750px;
   display: flex;
   text-align: center;
@@ -30,32 +30,96 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
-.todolist-container {
-  width: 625px;
+.todolist_container {
+  width: 550px;
   height: 700px;
 }
 
-.counter-container {
-  width: 625px;
+.counter_container {
+  width: 550px;
   height: 700px;
 }
 
-.rightNavbar-container {
-  width: 120px;
+.rightNavbar_container {
+  width: 100px;
   height: 700px;
   display: flex;
   flex-direction: column;
 }
 
-.nav-choose {
+/* Counter-container */
+
+.timer {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.counterPic {
+  width: 500px;
+  height: 550px;
+}
+
+.input_time {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  position: absolute;
+  top: 220px;
+  left: 120px;
+  font-size: 120px;
+  color: white;
+  cursor: default;
+}
+
+.counter_divider {
+  margin: auto;
+  width: 550px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 5em 5em;
+}
+
+.counter_footer {
+  position: relative;
+  height: 180px;
+}
+
+.start_button {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 20px;
+  left: 230px;
+  cursor: pointer;
+}
+
+.cancle_button {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 50px;
+  right: 130px;
+  cursor: pointer;
+}
+
+.playPic {
+  width: 90px;
+}
+
+.canclePic {
+  width: 40px;
+}
+
+/* rightNavbar-container */
+.nav_choose {
   background-color: #ffffff;
   border-bottom-left-radius: 4em 5em;
   border-top-left-radius: 4em 5em;
 }
 
-.Home-page,
-.Music-page,
-.Statistic-page {
+.Home_page,
+.Music_page,
+.Statistic_page {
   display: flex;
   align-items: center;
   justify-content: center;

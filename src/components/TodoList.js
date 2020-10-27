@@ -3,9 +3,9 @@ import React from "react";
 const TodoList = () => {
   const todos = [1, 2, 3];
   return (
-    <div className="todolist-container">
-      <div className="todolist-input">
-        <ul className="todolist-list">
+    <div className="todolist_container">
+      <div className="todolist_input">
+        <ul className="todolist_list">
           {todos.map((todo) => (
             <li>{todo}</li>
           ))}
@@ -17,7 +17,7 @@ const TodoList = () => {
           placeholder="Add A New Mission"
         />
       </div>
-      <div className="todolist-cpmolete">4</div>
+      <div className="todolist_cpmolete">4</div>
     </div>
   );
 };
