@@ -1,7 +1,7 @@
 body {
-  background-color: #d9564a;
   display: flex;
   justify-content: center;
+  background: cornsilk;
 }
 
 .App {
@@ -9,19 +9,40 @@ body {
   flex-direction: row;
   padding: auto;
   margin-top: 20px;
+  width: 1380px;
+  height: 660px;
+  padding: 20px 0px 20px 0px;
+  background-color: #d9564a;
 }
 
-.App_name {
+.App_namePart {
   display: flex;
   flex-direction: column;
   writing-mode: vertical-rl;
-  text-orientation: mixed;
   color: #ffe5b5;
+}
+
+.App_namePart_1 {
+  position: relative;
+  right: 30px;
+  font-size: 40px;
+  margin: 0;
+}
+
+.App_namePart_2 span {
+  position: relative;
+  right: 18px;
+  margin: 0;
+  font-size: 90px;
+}
+
+.name_titlePic {
+  transform: rotate(90deg);
 }
 
 .App_content {
   width: 1200px;
-  height: 750px;
+  height: 650px;
   display: flex;
   text-align: center;
   background-color: #ffe5b5;
@@ -32,19 +53,19 @@ body {
 
 .todolist_container {
   width: 500px;
-  height: 650px;
+  height: 600px;
   padding: 50px 50px 0px 50px;
   position: relative;
 }
 
 .counter_container {
   width: 500px;
-  height: 700px;
+  height: 600px;
 }
 
 .rightNavbar_container {
   width: 100px;
-  height: 700px;
+  height: 600px;
   display: flex;
   flex-direction: column;
 }
@@ -95,6 +116,7 @@ li {
 .todo_content {
   width: 350px;
   text-align: start;
+  font-size: 25px;
 }
 
 .todo_play {
@@ -150,7 +172,7 @@ li {
   flex-direction: column;
   background: #ffffff80;
   position: absolute;
-  bottom: 0;
+  bottom: 25px;
   left: 50px;
   width: 500px;
   padding: 10px;
@@ -179,6 +201,10 @@ li {
   margin-right: 20px;
 }
 
+.complete_content {
+  font-size: 25px;
+}
+
 /* Counter-container */
 
 .timer {
@@ -187,8 +213,8 @@ li {
 }
 
 .counterPic {
-  width: 500px;
-  height: 550px;
+  width: 450px;
+  height: 450px;
 }
 
 .input_time {
@@ -196,7 +222,7 @@ li {
   outline: 0;
   background: transparent;
   position: absolute;
-  top: 220px;
+  top: 160px;
   right: 70px;
   font-size: 120px;
   color: white;
@@ -205,7 +231,7 @@ li {
 
 .counter_divider {
   margin: auto;
-  width: 550px;
+  width: 500px;
   height: 8px;
   background-color: #ffffff;
   border-radius: 5em 5em;
@@ -213,15 +239,15 @@ li {
 
 .counter_footer {
   position: relative;
-  height: 140px;
+  height: 100px;
 }
 
 .start_button {
   background: transparent;
   border: none;
   position: absolute;
-  top: 20px;
-  left: 210px;
+  top: 15px;
+  left: 220px;
   cursor: pointer;
 }
 
@@ -229,17 +255,17 @@ li {
   background: transparent;
   border: none;
   position: absolute;
-  top: 50px;
-  right: 110px;
+  top: 30px;
+  right: 120px;
   cursor: pointer;
 }
 
 .counter_playPic {
-  width: 90px;
+  width: 70px;
 }
 
 .counter_canclePic {
-  width: 40px;
+  width: 35px;
 }
 
 /* rightNavbar-container */
