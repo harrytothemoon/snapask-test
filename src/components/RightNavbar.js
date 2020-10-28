@@ -6,27 +6,27 @@ import icon_statistic_rightbar from "../image/chart.png";
 const RightNavbar = () => {
   return (
     <div className="rightNavbar_container">
-      <a className="Home_page nav_choose" href="/">
+      <button className="Home_page nav_choose">
         <img
           src={icon_home_rightbar}
           className="icon_home_rightbar"
           alt="home"
         />
-      </a>
-      <a className="Music_page" href="/">
+      </button>
+      <button className="Music_page">
         <img
           src={icon_music_rightbar}
           className="icon_music_rightbar"
           alt="home"
         />
-      </a>
-      <a className="Statistic_page" href="/">
+      </button>
+      <button className="Statistic_page">
         <img
           src={icon_statistic_rightbar}
           className="icon_statistic_rightbar"
           alt="home"
         />
-      </a>
+      </button>
     </div>
   );
 };

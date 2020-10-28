@@ -92,6 +92,7 @@ body {
 
 .todolist ul {
   padding-inline-start: 0px;
+  margin-block-end: 0.5em;
 }
 
 li {
@@ -103,12 +104,12 @@ li {
   right: 15px;
   display: flex;
   align-items: center;
-  padding-left: 26px;
+  padding-left: 23px;
   background-color: var(--bg-color-white);
   height: 80px;
   width: 540px;
   border-radius: 5em 5em;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 .todolist_list li:first-child:after {
@@ -131,7 +132,7 @@ li {
 
 .todolist_list li:first-child .todo_content {
   width: 400px;
-  margin-left: 20px;
+  margin-left: 17px;
   font-size: 30px;
   z-index: 1;
 }
@@ -144,8 +145,7 @@ li {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  line-height: 50px;
-  position: relative;
+  padding: 8px;
 }
 
 .todo_toggle {
@@ -157,10 +157,10 @@ li {
 }
 
 .todo_toggle:after {
-  position: absolute;
+  position: relative;
   width: 22px;
   height: 22px;
-  bottom: 10px;
+  bottom: 17px;
   content: " ";
   background: var(--bg-color-light);
   border: var(--bg-color-dark) solid 5px;
@@ -237,9 +237,9 @@ li {
   flex-direction: column;
   background: #ffffff80;
   position: absolute;
-  bottom: 25px;
+  bottom: 30px;
   left: 50px;
-  width: 500px;
+  width: 490px;
   padding: 10px;
   color: #707070;
 }
@@ -364,7 +364,7 @@ li {
 }
 
 /* rightNavbar-container */
-.nav_choose {
+.rightNavbar_container .nav_choose {
   background-color: var(--bg-color-white);
   border-bottom-left-radius: 4em 5em;
   border-top-left-radius: 4em 5em;
@@ -373,6 +373,9 @@ li {
 .Home_page,
 .Music_page,
 .Statistic_page {
+  cursor: pointer;
+  border: 0;
+  background: var(--bg-color-light);
   display: flex;
   align-items: center;
   justify-content: center;
