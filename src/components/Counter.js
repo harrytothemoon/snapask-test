@@ -1,15 +1,15 @@
 import React from "react";
-import playPic from "../image/play.png";
-import canclePic from "../image/cancle.png";
-import counterPic2 from "../image/tomatobig.svg";
+import icon_play＿counter from "../image/play.png";
+import icon_cancle_counter from "../image/cancle.png";
+import icon_tomato_counter from "../image/tomatobig.svg";
 
 const Counter = () => {
   return (
     <div className="counter_container">
       <div className="timer">
         <img
-          src={counterPic2}
-          className="counterPic"
+          src={icon_tomato_counter}
+          className="icon_tomato_counter"
           alt="counter background"
         />
         <h1 className="input_time">25:00</h1>
@@ -18,15 +18,15 @@ const Counter = () => {
       <div className="counter_footer">
         <button className="start_button">
           <img
-            src={playPic}
-            className="counter_playPic"
+            src={icon_play＿counter}
+            className="icon_play＿counter"
             alt="counter play button"
           />
         </button>
         <button className="cancle_button">
           <img
-            src={canclePic}
-            className="counter_canclePic"
+            src={icon_cancle_counter}
+            className="icon_cancle_counter"
             alt="counter cancle button"
           />
         </button>

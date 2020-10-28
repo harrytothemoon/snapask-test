@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <div className="App_namePart">
-        <h2 className="App_namePart_1">WEEK 1</h2>
-        <div className="App_namePart_2">
+        <h2 className="App_namePart_week">WEEK 1</h2>
+        <div className="App_namePart_title">
           <span>POMODOR</span>
           <img
             src={TitlePic}

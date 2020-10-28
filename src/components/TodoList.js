@@ -1,6 +1,6 @@
 import React from "react";
-import playPic from "../image/play.png";
-import plusPic from "../image/plus.png";
+import icon_play_todolist from "../image/play.png";
+import icon_plus_todolist from "../image/plus.png";
 
 const TodoList = () => {
   const todos = [
@@ -20,8 +20,8 @@ const TodoList = () => {
                 <label className="todo_content">{todo}</label>
                 <button className="todo_play">
                   <img
-                    src={playPic}
-                    className="todo_playPic"
+                    src={icon_play_todolist}
+                    className="icon_play_todolist"
                     alt="todo play button"
                   />
                 </button>
@@ -37,8 +37,8 @@ const TodoList = () => {
           />
           <button className="todo_plus">
             <img
-              src={plusPic}
-              className="todo_plusPic"
+              src={icon_plus_todolist}
+              className="icon_plus_todolist"
               alt="todo plus button"
             />
           </button>
