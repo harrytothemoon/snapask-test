@@ -16,7 +16,6 @@ body {
 
 .App {
   display: flex;
-  padding: auto;
   margin-top: 20px;
   width: 1380px;
   height: 660px;
@@ -132,6 +131,8 @@ li {
 }
 
 .todolist_list li:first-child .todo_content {
+  max-height: 50px;
+  overflow: auto;
   width: 400px;
   margin-left: 35px;
   font-size: 30px;
@@ -179,6 +180,8 @@ li {
 }
 
 .todo_content {
+  max-height: 50px;
+  overflow: auto;
   width: 350px;
   text-align: start;
   font-size: 25px;
@@ -235,12 +238,9 @@ li {
 }
 
 .todo_completePart {
-  display: flex;
-  flex-direction: column;
   background: #ffffff80;
   position: absolute;
   bottom: 30px;
-  left: 50px;
   width: 490px;
   padding: 10px;
   color: #707070;

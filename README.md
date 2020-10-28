@@ -15,6 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Font style: The font-style of the design layout is replaced by the 'bitter' font-style(from google font).
 - Image source: PNG files provided by the website and hand-drawn SVG files.
 - Use CSS custom properties (variables) to manage frequently used colors.
+- Import normalize.css: provides better cross-browser consistency in the default styling of HTML elements.
 
 ## Available Scripts
 
