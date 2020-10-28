@@ -2,7 +2,7 @@ import "./App.css";
 import TodoList from "./components/TodoList";
 import Counter from "./components/Counter";
 import RightNavbar from "./components/RightNavbar";
-import TitlePic from "./image/Group_39.png";
+import TitlePic from "./image/tomato-title.svg";
 
 function App() {
   return (

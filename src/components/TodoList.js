@@ -1,7 +1,6 @@
 import React from "react";
 import playPic from "../image/play.png";
 import plusPic from "../image/plus.png";
-import checkPic from "../image/checked.png";
 
 const TodoList = () => {
   const todos = [
@@ -51,11 +50,7 @@ const TodoList = () => {
           <a href="/">More</a>
         </div>
         <div className="complete_item">
-          <img
-            src={checkPic}
-            className="complete_checkPic"
-            alt="todo play button"
-          />
+          <input className="complete_check" type="checkbox" checked />
           <label className="complete_content">
             The Complete Thing To Do Today
           </label>

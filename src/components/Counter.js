@@ -1,13 +1,17 @@
 import React from "react";
-import counterPic from "../image/Group_39.png";
 import playPic from "../image/play.png";
 import canclePic from "../image/cancle.png";
+import counterPic2 from "../image/tomatobig.svg";
 
 const Counter = () => {
   return (
     <div className="counter_container">
       <div className="timer">
-        <img src={counterPic} className="counterPic" alt="counter background" />
+        <img
+          src={counterPic2}
+          className="counterPic"
+          alt="counter background"
+        />
         <h1 className="input_time">25:00</h1>
       </div>
       <div className="counter_divider"></div>
