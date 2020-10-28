@@ -104,7 +104,7 @@ li {
   right: 15px;
   display: flex;
   align-items: center;
-  padding-left: 23px;
+  padding-left: 30px;
   background-color: var(--bg-color-white);
   height: 80px;
   width: 540px;
@@ -126,17 +126,26 @@ li {
   visibility: visible;
 }
 
-.todolist_list li:first-child .todo_toggle:after {
+.todolist_list li:first-child .todo_content:after {
   background: var(--bg-color-white);
+  bottom: 19px;
+}
+
+.todolist_list li:first-child .todo_toggle:checked:after {
+  left: -4px;
 }
 
 .todolist_list li:first-child .todo_content {
-  max-height: 50px;
-  overflow: auto;
   width: 400px;
-  margin-left: 35px;
+  margin-left: 40px;
   font-size: 30px;
   z-index: 1;
+}
+
+.todolist_list li:first-child .todo_content p {
+  max-height: 50px;
+  overflow-y: scroll;
+  line-height: 1.6;
 }
 
 .todolist_list li:first-child .todo_play {
@@ -147,10 +156,11 @@ li {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 8px;
 }
 
 .todo_toggle {
+  position: relative;
+  left: 0;
   margin-right: 10px;
   cursor: pointer;
   font-size: 14px;
@@ -158,11 +168,34 @@ li {
   height: 0px;
 }
 
-.todo_toggle:after {
+.todolist_list {
   position: relative;
+}
+
+.todo_content {
+  position: relative;
+  width: 350px;
+  text-align: start;
+  font-size: 25px;
+  margin-left: 24px;
+  cursor: pointer;
+}
+
+.todo_content p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-height: 50px;
+  overflow-y: scroll;
+  line-height: 1.6;
+}
+
+.todo_content:after {
+  z-index: 0;
+  position: absolute;
   width: 22px;
   height: 22px;
-  bottom: 17px;
+  bottom: 16px;
+  left: -60px;
   content: " ";
   background: var(--bg-color-light);
   border: var(--bg-color-dark) solid 5px;
@@ -173,19 +206,13 @@ li {
 }
 
 .todo_toggle:checked:after {
+  position: absolute;
+  bottom: 0px;
+  z-index: 999;
   content: "✓";
   font-size: 38px;
   line-height: 13px;
   color: var(--bg-color-dark);
-}
-
-.todo_content {
-  max-height: 50px;
-  overflow: auto;
-  width: 350px;
-  text-align: start;
-  font-size: 25px;
-  margin-left: 24px;
 }
 
 .todo_play {
@@ -269,18 +296,18 @@ li {
   margin-left: 8px;
   cursor: pointer;
   font-size: 14px;
-  width: 15px;
-  height: 2px;
+  width: 0px;
+  height: 0px;
 }
 
-.complete_check:after {
+.complete_content:after {
   position: absolute;
   width: 20px;
   height: 20px;
-  bottom: 10px;
-  left: 5px;
+  bottom: 0px;
+  left: -45px;
   content: " ";
-  background: #ffffff80;
+  background: #fff2da;
   border: var(--bg-color-dark) solid 5px;
   color: black;
   display: inline-block;
@@ -290,6 +317,10 @@ li {
 }
 
 .complete_check:checked:after {
+  position: absolute;
+  z-index: 999;
+  bottom: 24px;
+  left: 15px;
   content: "✓";
   font-size: 38px;
   line-height: 13px;
@@ -297,7 +328,16 @@ li {
 }
 
 .complete_content {
+  position: relative;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.complete_content p {
+  margin: 0;
+  max-height: 50px;
+  overflow-y: scroll;
+  line-height: 1.6;
 }
 
 /* Counter-container */

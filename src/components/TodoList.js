@@ -13,11 +13,17 @@ const TodoList = () => {
     <div className="todolist_container">
       <div className="todolist">
         <ul className="todolist_list">
-          {todos.map((todo) => (
+          {todos.map((todo, i) => (
             <li>
               <div class="todo_item">
-                <input className="todo_toggle" type="checkbox" />
-                <label className="todo_content">{todo}</label>
+                <input
+                  id={"todo_toggle-" + i}
+                  className="todo_toggle"
+                  type="checkbox"
+                />
+                <label className="todo_content" for={"todo_toggle-" + i}>
+                  <p>{todo}</p>
+                </label>
                 <button className="todo_play">
                   <img
                     src={icon_play_todolist}
@@ -50,9 +56,14 @@ const TodoList = () => {
           <a href="/">More</a>
         </div>
         <div className="complete_item">
-          <input className="complete_check" type="checkbox" checked />
-          <label className="complete_content">
-            The Complete Thing To Do Today
+          <input
+            id="complete_content"
+            className="complete_check"
+            type="checkbox"
+            checked
+          />
+          <label className="complete_content" for="complete_content">
+            <p>The Complete Thing To Do Today</p>
           </label>
         </div>
       </div>
