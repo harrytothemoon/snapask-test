@@ -16,7 +16,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Image source: PNG files provided by the website and hand-drawn SVG files.
 - Use CSS custom properties (variables) to manage frequently used colors.
 - Import normalize.css: provides better cross-browser consistency in the default styling of HTML elements.
-- Cross-browser: Considering that FireFox does not support the pseudo elements of input tag.
+- Cross-browser: Considering that FireFox does not support the pseudo elements of input tag (on going).
 
 ## Available Scripts
 
