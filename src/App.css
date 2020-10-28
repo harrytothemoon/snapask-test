@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
 
+:root {
+  --bg-color-light: #ffe5b5;
+  --bg-color-dark: #d9674e;
+  --bg-color-white: #ffffff;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -18,11 +24,13 @@ body {
   overflow: hidden;
 }
 
+/* App-title */
+
 .App_namePart {
   display: flex;
   flex-direction: column;
   writing-mode: vertical-rl;
-  color: #ffe5b5;
+  color: var(--bg-color-light);
 }
 
 .App_namePart_week {
@@ -48,12 +56,14 @@ body {
   transform: rotate(90deg);
 }
 
+/* App-content-layout */
+
 .App_content {
   width: 1200px;
   height: 650px;
   display: flex;
   text-align: center;
-  background-color: #ffe5b5;
+  background-color: var(--bg-color-light);
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -94,7 +104,7 @@ li {
   display: flex;
   align-items: center;
   padding-left: 26px;
-  background-color: #ffffff;
+  background-color: var(--bg-color-white);
   height: 80px;
   width: 540px;
   border-radius: 5em 5em;
@@ -106,7 +116,7 @@ li {
   right: -50px;
   top: 50px;
   content: " ";
-  border-color: #ffffff transparent transparent transparent;
+  border-color: var(--bg-color-white) transparent transparent transparent;
   border-style: solid;
   border-width: 50px;
   transform: skewX(60deg);
@@ -116,7 +126,7 @@ li {
 }
 
 .todolist_list li:first-child .todo_toggle:after {
-  background: #ffffff;
+  background: var(--bg-color-white);
 }
 
 .todolist_list li:first-child .todo_content {
@@ -152,8 +162,8 @@ li {
   height: 22px;
   bottom: 10px;
   content: " ";
-  background: #ffe5b5;
-  border: #d9674e solid 5px;
+  background: var(--bg-color-light);
+  border: var(--bg-color-dark) solid 5px;
   color: black;
   display: inline-block;
   visibility: visible;
@@ -164,7 +174,7 @@ li {
   content: "✓";
   font-size: 38px;
   line-height: 13px;
-  color: #d9674e;
+  color: var(--bg-color-dark);
 }
 
 .todo_content {
@@ -181,7 +191,7 @@ li {
 
 .icon_play_todolist {
   width: 40px;
-  background-color: #ffffff;
+  background-color: var(--bg-color-white);
   border-radius: 100%;
 }
 
@@ -189,8 +199,8 @@ li {
   display: flex;
   align-items: center;
   margin-left: 5px;
-  border: #d9674e solid 3px;
-  background-color: #ffffff;
+  border: var(--bg-color-dark) solid 3px;
+  background-color: var(--bg-color-white);
   border-radius: 4px;
 }
 
@@ -199,7 +209,7 @@ li {
   height: 50px;
   border: none;
   font-size: 20px;
-  color: #d9674e;
+  color: var(--bg-color-dark);
   padding-left: 15px;
 }
 
@@ -213,8 +223,8 @@ li {
   height: 50px;
   background: transparent;
   border: none;
-  border-left: #d9674e solid 3px;
-  background-color: #ffffff;
+  border-left: var(--bg-color-dark) solid 3px;
+  background-color: var(--bg-color-white);
   cursor: pointer;
 }
 
@@ -269,7 +279,7 @@ li {
   left: 5px;
   content: " ";
   background: #ffffff80;
-  border: #d9674e solid 5px;
+  border: var(--bg-color-dark) solid 5px;
   color: black;
   display: inline-block;
   visibility: visible;
@@ -281,7 +291,7 @@ li {
   content: "✓";
   font-size: 38px;
   line-height: 13px;
-  color: #d9674e;
+  color: var(--bg-color-dark);
 }
 
 .complete_content {
@@ -310,7 +320,7 @@ li {
   top: 170px;
   right: 100px;
   font-size: 110px;
-  color: white;
+  color: var(--bg-color-white);
   cursor: default;
 }
 
@@ -318,7 +328,7 @@ li {
   margin: auto;
   width: 500px;
   height: 8px;
-  background-color: #ffffff;
+  background-color: var(--bg-color-white);
   border-radius: 5em 5em;
 }
 
@@ -355,7 +365,7 @@ li {
 
 /* rightNavbar-container */
 .nav_choose {
-  background-color: #ffffff;
+  background-color: var(--bg-color-white);
   border-bottom-left-radius: 4em 5em;
   border-top-left-radius: 4em 5em;
 }
