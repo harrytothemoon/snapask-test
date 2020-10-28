@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/snapask-test/static/css/main.9e71642f.chunk.css",
-    "main.js": "/snapask-test/static/js/main.890ed8b2.chunk.js",
-    "main.js.map": "/snapask-test/static/js/main.890ed8b2.chunk.js.map",
+    "main.css": "/snapask-test/static/css/main.baad40fa.chunk.css",
+    "main.js": "/snapask-test/static/js/main.58e52c97.chunk.js",
+    "main.js.map": "/snapask-test/static/js/main.58e52c97.chunk.js.map",
     "runtime-main.js": "/snapask-test/static/js/runtime-main.5e1233aa.js",
     "runtime-main.js.map": "/snapask-test/static/js/runtime-main.5e1233aa.js.map",
     "static/js/2.99d78b3e.chunk.js": "/snapask-test/static/js/2.99d78b3e.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.e3f30b3e.chunk.js": "/snapask-test/static/js/3.e3f30b3e.chunk.js",
     "static/js/3.e3f30b3e.chunk.js.map": "/snapask-test/static/js/3.e3f30b3e.chunk.js.map",
     "index.html": "/snapask-test/index.html",
-    "static/css/main.9e71642f.chunk.css.map": "/snapask-test/static/css/main.9e71642f.chunk.css.map",
+    "static/css/main.baad40fa.chunk.css.map": "/snapask-test/static/css/main.baad40fa.chunk.css.map",
     "static/js/2.99d78b3e.chunk.js.LICENSE.txt": "/snapask-test/static/js/2.99d78b3e.chunk.js.LICENSE.txt",
     "static/media/tomato-title.aa35c13d.svg": "/snapask-test/static/media/tomato-title.aa35c13d.svg",
     "static/media/tomatobig.e413a386.svg": "/snapask-test/static/media/tomatobig.e413a386.svg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.5e1233aa.js",
     "static/js/2.99d78b3e.chunk.js",
-    "static/css/main.9e71642f.chunk.css",
-    "static/js/main.890ed8b2.chunk.js"
+    "static/css/main.baad40fa.chunk.css",
+    "static/js/main.58e52c97.chunk.js"
   ]
 }
