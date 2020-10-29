@@ -425,6 +425,7 @@ li {
   margin-top: 5px;
   margin-bottom: 5px;
   padding-right: 10px;
+  outline: none;
 }
 
 .icon_home_rightbar,
