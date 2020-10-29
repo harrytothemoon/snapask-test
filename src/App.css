@@ -245,7 +245,7 @@ li {
   padding-left: 15px;
 }
 
-::placeholder {
+.todo_input::placeholder {
   color: #d9674eb9;
   padding: 10px;
 }
@@ -354,16 +354,31 @@ li {
   filter: drop-shadow(0px 3px 6px #00000029);
 }
 
-.input_time {
-  border: 0;
-  outline: 0;
-  background: transparent;
+.input_time_part {
   position: absolute;
-  top: 170px;
-  right: 100px;
-  font-size: 110px;
+  top: 220px;
+  right: 30px;
+  width: 400px;
+  font-size: 50px;
   color: var(--bg-color-white);
   cursor: default;
+}
+
+.input_time_idle {
+  border: 0;
+  outline: 0;
+  color: var(--bg-color-white);
+  background: transparent;
+  font-size: 100px;
+  width: 150px;
+  text-align: center;
+}
+
+.input_time_start {
+  color: var(--bg-color-white);
+  background: transparent;
+  font-size: 120px;
+  width: 375px;
 }
 
 .counter_divider {

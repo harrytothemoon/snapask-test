@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import icon_home_rightbar from "../image/tomato.png";
 import icon_music_rightbar from "../image/music.png";
 import icon_statistic_rightbar from "../image/chart.png";
-
-const { useState } = React;
 
 const RightNavbar = () => {
   const [toggleClass, setToggleClass] = useState("home");
