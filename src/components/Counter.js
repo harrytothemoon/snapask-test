@@ -31,7 +31,7 @@ const Counter = () => {
 
   const render = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
+    const seconds = Math.round(totalSeconds % 60);
     const formatTime = `${minutes}:${String(seconds).padStart(2, 0)}`;
     document.title = `remaining time: ${formatTime}`;
     setTime(formatTime);
@@ -90,6 +90,9 @@ const Counter = () => {
           onClick={() => handleClickStart(mins)}
           className="start_button"
           disabled={timerStatus === "start" ? true : null}
+          style={{
+            cursor: timerStatus === "start" ? "not-allowed" : "pointer",
+          }}
         >
           <img
             src={icon_play＿counter}

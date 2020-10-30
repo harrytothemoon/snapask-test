@@ -32,6 +32,7 @@ const TodoList = () => {
     },
   ];
   const [todo, setTodo] = useState(todos);
+  const [addTodo, setAddTodo] = useState("");
 
   const handleCheckChange = (e, id) => {
     let newTodo = [...todo].map((item) => {
@@ -39,6 +40,30 @@ const TodoList = () => {
       return item;
     });
     setTodo(newTodo);
+  };
+
+  const handleAddInput = (value) => {
+    if (todo.filter((x) => !x.completed).length > 4) {
+      return alert("Please do not exceed five to-do tasks.");
+    }
+    if (value.length > 25) {
+      return alert(
+        `Please do not enter more than 25 characters. Number of characters:${value.length}`
+      );
+    }
+    let newTodo = [...todo];
+    newTodo.push({
+      id: uuid(),
+      title: value,
+      completed: false,
+    });
+    setAddTodo("");
+    setTodo(newTodo);
+  };
+
+  const filterKey = (key) => {
+    if (key === "Enter") return handleAddInput(addTodo);
+    return;
   };
 
   return (
@@ -78,12 +103,16 @@ const TodoList = () => {
             className="todo_input"
             type="text"
             placeholder="Add A New Mission..."
+            value={addTodo}
+            onChange={(e) => setAddTodo(e.target.value)}
+            onKeyDown={(e) => filterKey(e.key)}
           />
           <button className="todo_plus">
             <img
               src={icon_plus_todolist}
               className="icon_plus_todolist"
               alt="todo plus button"
+              onClick={() => handleAddInput(addTodo)}
             />
           </button>
         </div>
