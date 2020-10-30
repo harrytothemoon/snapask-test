@@ -43,10 +43,15 @@ const TodoList = (props) => {
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCheckChange = (e, id) => {
-    let newTodo = [...todo].map((item) => {
-      if (item.id === id) item.completed = e.checked;
+    let targetIndex;
+    let newTodo = [...todo].map((item, i) => {
+      if (item.id === id) {
+        item.completed = e.checked;
+        targetIndex = i;
+      }
       return item;
     });
+    newTodo.push(newTodo.splice(targetIndex, 1)[0]);
     setTodo(newTodo);
   };
 
@@ -86,6 +91,7 @@ const TodoList = (props) => {
                     id={"todo_toggle-" + todo.id}
                     className="todo_toggle"
                     type="checkbox"
+                    checked={todo.completed}
                     onChange={(e) => handleCheckChange(e.target, todo.id)}
                   />
                   <label
@@ -130,25 +136,27 @@ const TodoList = (props) => {
           <span>Recently completed--</span>
           <a href="/">More</a>
         </div>
-        {todo.map((todo) => {
-          return todo.completed ? (
-            <div className="complete_item">
-              <input
-                id={"complete_content-" + todo.id}
-                className="complete_check"
-                type="checkbox"
-                checked={todo.completed}
-                onChange={(e) => handleCheckChange(e.target, todo.id)}
-              />
-              <label
-                className="complete_content"
-                for={"complete_content-" + todo.id}
-              >
-                <p>{todo.title}</p>
-              </label>
-            </div>
-          ) : null;
-        })}
+        {todo
+          .map((todo) => {
+            return todo.completed ? (
+              <div className="complete_item">
+                <input
+                  id={"complete_content-" + todo.id}
+                  className="complete_check"
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={(e) => handleCheckChange(e.target, todo.id)}
+                />
+                <label
+                  className="complete_content"
+                  for={"complete_content-" + todo.id}
+                >
+                  <p>{todo.title}</p>
+                </label>
+              </div>
+            ) : null;
+          })
+          .reverse()}
       </div>
     </div>
   );
