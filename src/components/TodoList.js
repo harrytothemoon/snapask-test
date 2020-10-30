@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import icon_play_todolist from "../image/play.png";
 import icon_plus_todolist from "../image/plus.png";
 import { uuid } from "uuidv4";
 
-const TodoList = () => {
+const TodoList = (props) => {
+  const { timesUp } = props;
   const todos = [
     {
       id: uuid(),
@@ -33,6 +34,13 @@ const TodoList = () => {
   ];
   const [todo, setTodo] = useState(todos);
   const [addTodo, setAddTodo] = useState("");
+
+  useEffect(() => {
+    if (!timesUp) return;
+    let newTodo = [...todo];
+    newTodo.filter((x) => !x.completed)[0].completed = true;
+    setTodo(newTodo);
+  }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCheckChange = (e, id) => {
     let newTodo = [...todo].map((item) => {

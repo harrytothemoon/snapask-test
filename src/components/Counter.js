@@ -3,7 +3,8 @@ import icon_play＿counter from "../image/play.png";
 import icon_cancle_counter from "../image/cancle.png";
 import icon_tomato_counter from "../image/tomatobig.svg";
 
-const Counter = () => {
+const Counter = (props) => {
+  const { hanldeTimesupChange } = props;
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
@@ -22,6 +23,7 @@ const Counter = () => {
       return;
     }
     setTimerStatus("start");
+    hanldeTimesupChange(false);
   };
 
   const handleStop = () => {
@@ -46,6 +48,7 @@ const Counter = () => {
       if (remainingSeconds < 0) {
         document.title = "Pomodor App";
         clearInterval(timerId);
+        hanldeTimesupChange(true);
         alert("Time's up!");
         setTimerStatus("idle");
         return;
