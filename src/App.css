@@ -14,6 +14,10 @@ body {
   font-family: "Bitter", serif;
 }
 
+button {
+  outline: none;
+}
+
 .App {
   display: flex;
   margin-top: 20px;
@@ -287,8 +291,10 @@ li {
 }
 
 .complete_item {
+  position: relative;
   display: flex;
   align-items: center;
+  height: 30px;
 }
 
 .complete_check {
@@ -319,8 +325,8 @@ li {
 .complete_check:checked:after {
   position: absolute;
   z-index: 999;
-  bottom: 24px;
-  left: 15px;
+  bottom: 15px;
+  left: 5px;
   content: "✓";
   font-size: 38px;
   line-height: 13px;
@@ -440,7 +446,6 @@ li {
   margin-top: 5px;
   margin-bottom: 5px;
   padding-right: 10px;
-  outline: none;
 }
 
 .icon_home_rightbar,

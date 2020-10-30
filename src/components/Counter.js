@@ -36,11 +36,11 @@ const Counter = () => {
     document.title = `remaining time: ${formatTime}`;
     setTime(formatTime);
   };
-
+  //TODO eslint
   useEffect(() => {
     if (timerStatus === "idle") return;
     render(mins * 60);
-    const endTime = Date.now() + mins * 60 * 1000;
+    const endTime = Date.now() + mins * 60 * 1000 + 1000;
     let timerId = setInterval(() => {
       const remainingSeconds = Math.floor((endTime - Date.now()) / 1000);
       if (remainingSeconds < 0) {
