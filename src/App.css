@@ -135,7 +135,7 @@ li {
 }
 
 .todolist_list li:first-child .todo_content {
-  width: 450px;
+  width: 440px;
   margin-left: 40px;
   font-size: 30px;
   z-index: 1;
@@ -419,6 +419,7 @@ li {
 
 .icon_play＿counter {
   width: 65px;
+  border-radius: 100%;
 }
 
 .icon_cancle_counter {

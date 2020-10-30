@@ -4,7 +4,7 @@ import icon_cancle_counter from "../image/cancle.png";
 import icon_tomato_counter from "../image/tomatobig.svg";
 
 const Counter = (props) => {
-  const { hanldeTimesupChange } = props;
+  const { hanldeTimesrunStatus, timesUp } = props;
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
@@ -13,21 +13,25 @@ const Counter = (props) => {
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {
+      hanldeTimesrunStatus("idle");
       alert("Please enter a value greater than zero.");
       return;
     } else if (isNaN(minutes)) {
+      hanldeTimesrunStatus("idle");
       alert("Please enter a valid value.");
       return;
     } else if (minutes > 30) {
+      hanldeTimesrunStatus("idle");
       alert("Please enter a time within 30 minutes.");
       return;
     }
     setTimerStatus("start");
-    hanldeTimesupChange(false);
+    hanldeTimesrunStatus("start");
   };
 
   const handleStop = () => {
     setTimerStatus("idle");
+    hanldeTimesrunStatus("idle");
     document.title = "Pomodor App";
   };
 
@@ -38,7 +42,7 @@ const Counter = (props) => {
     document.title = `remaining time: ${formatTime}`;
     setTime(formatTime);
   };
-  //TODO eslint
+
   useEffect(() => {
     if (timerStatus === "idle") return;
     render(mins * 60);
@@ -48,7 +52,7 @@ const Counter = (props) => {
       if (remainingSeconds < 0) {
         document.title = "Pomodor App";
         clearInterval(timerId);
-        hanldeTimesupChange(true);
+        hanldeTimesrunStatus("over");
         alert("Time's up!");
         setTimerStatus("idle");
         return;
@@ -59,6 +63,11 @@ const Counter = (props) => {
       clearInterval(timerId);
     };
   }, [timerStatus]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (timesUp !== "start") return;
+    handleClickStart(mins);
+  }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className="counter_container">
@@ -101,6 +110,9 @@ const Counter = (props) => {
             src={icon_play＿counter}
             className="icon_play＿counter"
             alt="counter play button"
+            style={{
+              filter: timerStatus === "start" ? "grayscale(60%)" : null,
+            }}
           />
         </button>
         <button onClick={() => handleStop()} className="cancle_button">

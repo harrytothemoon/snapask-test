@@ -4,7 +4,7 @@ import icon_plus_todolist from "../image/plus.png";
 import { uuid } from "uuidv4";
 
 const TodoList = (props) => {
-  const { timesUp } = props;
+  const { hanldeTimesrunStatus, timesUp } = props;
   const todos = [
     {
       id: uuid(),
@@ -36,7 +36,7 @@ const TodoList = (props) => {
   const [addTodo, setAddTodo] = useState("");
 
   useEffect(() => {
-    if (!timesUp) return;
+    if (timesUp !== "over") return;
     let newTodo = [...todo];
     newTodo.filter((x) => !x.completed)[0].completed = true;
     setTodo(newTodo);
@@ -52,6 +52,14 @@ const TodoList = (props) => {
       return item;
     });
     newTodo.push(newTodo.splice(targetIndex, 1)[0]);
+    setTodo(newTodo);
+  };
+
+  const handleChangeTask = (id) => {
+    hanldeTimesrunStatus("start");
+    let newTodo = [...todo];
+    let targetIndex = newTodo.findIndex((item) => item.id === id);
+    newTodo.unshift(newTodo.splice(targetIndex, 1)[0]);
     setTodo(newTodo);
   };
 
@@ -78,7 +86,7 @@ const TodoList = (props) => {
     if (key === "Enter") return handleAddInput(addTodo);
     return;
   };
-
+  //TODO more功能
   return (
     <div className="todolist_container">
       <div className="todolist">
@@ -100,11 +108,20 @@ const TodoList = (props) => {
                   >
                     <p>{todo.title}</p>
                   </label>
-                  <button className="todo_play">
+                  <button
+                    className="todo_play"
+                    style={{
+                      cursor: timesUp === "start" ? "not-allowed" : "pointer",
+                    }}
+                    onClick={() => handleChangeTask(todo.id)}
+                  >
                     <img
                       src={icon_play_todolist}
                       className="icon_play_todolist"
                       alt="todo play button"
+                      style={{
+                        filter: timesUp === "start" ? "grayscale(60%)" : null,
+                      }}
                     />
                   </button>
                 </div>

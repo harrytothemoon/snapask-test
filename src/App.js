@@ -6,8 +6,8 @@ import TitlePic from "./image/tomato-title.svg";
 import { useState } from "react";
 
 function App() {
-  const [timesUp, setTimesUp] = useState(false);
-  const hanldeTimesupChange = (status) => {
+  const [timesUp, setTimesUp] = useState("idle");
+  const hanldeTimesrunStatus = (status) => {
     setTimesUp(status);
   };
   return (
@@ -25,8 +25,14 @@ function App() {
         </div>
       </div>
       <div className="App_content">
-        <TodoList timesUp={timesUp} />
-        <Counter hanldeTimesupChange={hanldeTimesupChange} />
+        <TodoList
+          hanldeTimesrunStatus={hanldeTimesrunStatus}
+          timesUp={timesUp}
+        />
+        <Counter
+          hanldeTimesrunStatus={hanldeTimesrunStatus}
+          timesUp={timesUp}
+        />
         <RightNavbar />
       </div>
     </div>
