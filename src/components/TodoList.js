@@ -38,7 +38,8 @@ const TodoList = (props) => {
   useEffect(() => {
     if (timesUp !== "over") return;
     let newTodo = [...todo];
-    newTodo.filter((x) => !x.completed)[0].completed = true;
+    newTodo[0].completed = true;
+    newTodo.push(newTodo.splice(0, 1)[0]);
     setTodo(newTodo);
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
