@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/snapask-test/static/css/main.a686b01b.chunk.css",
-    "main.js": "/snapask-test/static/js/main.bb9fbbd3.chunk.js",
-    "main.js.map": "/snapask-test/static/js/main.bb9fbbd3.chunk.js.map",
+    "main.js": "/snapask-test/static/js/main.8d0c165b.chunk.js",
+    "main.js.map": "/snapask-test/static/js/main.8d0c165b.chunk.js.map",
     "runtime-main.js": "/snapask-test/static/js/runtime-main.a6536727.js",
     "runtime-main.js.map": "/snapask-test/static/js/runtime-main.a6536727.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/snapask-test/static/css/2.ccc6f86f.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.ccc6f86f.chunk.css",
     "static/js/2.1d9ed8b8.chunk.js",
     "static/css/main.a686b01b.chunk.css",
-    "static/js/main.bb9fbbd3.chunk.js"
+    "static/js/main.8d0c165b.chunk.js"
   ]
 }
