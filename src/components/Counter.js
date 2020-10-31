@@ -4,25 +4,33 @@ import icon_cancle_counter from "../image/cancle.png";
 import icon_tomato_counter from "../image/tomatobig.svg";
 
 const Counter = (props) => {
-  const { hanldeTimesrunStatus, timesUp } = props;
+  const { hanldeTimesrunStatus, timesUp, toast } = props;
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
 
-  //TODOS alert 優化
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {
       hanldeTimesrunStatus("idle");
-      alert("Please enter a value greater than zero.");
+      toast.info("Please enter a value greater than zero!", {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: "greater-than-zero",
+      });
       return;
     } else if (isNaN(minutes)) {
       hanldeTimesrunStatus("idle");
-      alert("Please enter a valid value.");
+      toast.info("Please enter a valid value!", {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: "valid-value",
+      });
       return;
     } else if (minutes > 30) {
       hanldeTimesrunStatus("idle");
-      alert("Please enter a time within 30 minutes.");
+      toast.info("Please enter a time within 30 minutes!", {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: "30-minutes",
+      });
       return;
     }
     setTimerStatus("start");
@@ -53,7 +61,12 @@ const Counter = (props) => {
         document.title = "Pomodor App";
         clearInterval(timerId);
         hanldeTimesrunStatus("over");
-        alert("Time's up!");
+        toast.info("Time's up!", {
+          position: toast.POSITION.TOP_CENTER,
+          toastId: "Times-up",
+          autoClose: 2000,
+          hideProgressBar: true,
+        });
         setTimerStatus("idle");
         return;
       }

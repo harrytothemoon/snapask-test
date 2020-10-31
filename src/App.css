@@ -280,13 +280,19 @@ li {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  height: 35px;
+  height: 40px;
+  align-items: center;
 }
 
-.complete_title a {
+.complete_title button {
   color: #858c51;
   text-decoration: none;
   margin-right: 10px;
+  outline: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .complete_item {
@@ -452,4 +458,18 @@ li {
 .icon_music_rightbar,
 .icon_statistic_rightbar {
   width: 40px;
+}
+
+.Toastify__toast-container {
+  width: auto !important;
+}
+
+.Toastify__toast--default {
+  cursor: default !important;
+}
+
+.Toastify__toast--info {
+  font-size: 24px;
+  background: #5856d6 !important;
+  border-radius: 1rem !important;
 }

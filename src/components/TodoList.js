@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import icon_play_todolist from "../image/play.png";
 import icon_plus_todolist from "../image/plus.png";
 import { uuid } from "uuidv4";
+import { Zoom } from "react-toastify";
 
 const TodoList = (props) => {
-  const { hanldeTimesrunStatus, timesUp } = props;
+  const { hanldeTimesrunStatus, timesUp, toast } = props;
   const todos = [
     {
       id: uuid(),
@@ -66,12 +67,22 @@ const TodoList = (props) => {
 
   const handleAddInput = (value) => {
     if (todo.filter((x) => !x.completed).length > 4) {
-      return alert("Please do not exceed five to-do tasks.");
+      return toast.info("Please do not exceed five to-do tasks!", {
+        position: toast.POSITION.TOP_LEFT,
+        toastId: "exceed-five",
+      });
     }
     if (value.length > 25) {
-      return alert(
-        `Please do not enter more than 25 characters. Number of characters:${value.length}`
-      );
+      return toast.info("Please do not enter more than 25 characters!", {
+        position: toast.POSITION.TOP_LEFT,
+        toastId: "25-characters",
+      });
+    }
+    if (value.length === 0) {
+      return toast.info("Input value cannot be empty!", {
+        position: toast.POSITION.TOP_LEFT,
+        toastId: "value-empty",
+      });
     }
     let newTodo = [...todo];
     newTodo.push({
@@ -87,7 +98,47 @@ const TodoList = (props) => {
     if (key === "Enter") return handleAddInput(addTodo);
     return;
   };
-  //TODO more功能
+
+  const Msg = () => (
+    <div>
+      <h1>Completed Task</h1>
+      {todo
+        .map((todo) => {
+          return todo.completed ? (
+            <div className="complete_item">
+              <input
+                id={"complete_content-" + todo.id}
+                className="complete_check"
+                type="checkbox"
+                checked={todo.completed}
+                disabled={true}
+                style={{
+                  cursor: "default",
+                }}
+              />
+              <label
+                className="complete_content"
+                style={{
+                  cursor: "default",
+                }}
+              >
+                <p>{todo.title}</p>
+              </label>
+            </div>
+          ) : null;
+        })
+        .reverse()}
+    </div>
+  );
+  const moreShow = () => {
+    toast(Msg, {
+      transition: Zoom,
+      autoClose: false,
+      position: toast.POSITION.TOP_CENTER,
+      toastId: "completed-item-all",
+      closeOnClick: false,
+    });
+  };
   return (
     <div className="todolist_container">
       <div className="todolist">
@@ -152,7 +203,7 @@ const TodoList = (props) => {
       <div className="todo_completePart">
         <div className="complete_title">
           <span>Recently completed--</span>
-          <a href="/">More</a>
+          <button onClick={moreShow}>More</button>
         </div>
         {todo
           .map((todo) => {
