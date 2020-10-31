@@ -5,7 +5,7 @@ import { uuid } from "uuidv4";
 import { Zoom } from "react-toastify";
 
 const TodoList = (props) => {
-  const { hanldeTimesrunStatus, timesUp, toast } = props;
+  const { hanldeTimesrunStatus, hanldeTaskAmount, timesUp, toast } = props;
   const todos = [
     {
       id: uuid(),
@@ -47,6 +47,10 @@ const TodoList = (props) => {
     newTodo.push(newTodo.splice(ongoingIdex, 1)[0]);
     setTodo(newTodo);
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    hanldeTaskAmount(todo.filter((item) => !item.completed).length);
+  }, [todo]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCheckChange = (e, id) => {
     let targetIndex;
@@ -140,6 +144,7 @@ const TodoList = (props) => {
         .reverse()}
     </div>
   );
+
   const moreShow = () => {
     toast(completedTask, {
       transition: Zoom,
@@ -149,6 +154,7 @@ const TodoList = (props) => {
       closeOnClick: false,
     });
   };
+
   return (
     <div className="todolist_container">
       <div className="todolist">

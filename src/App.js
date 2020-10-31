@@ -9,9 +9,14 @@ import "./App.css";
 
 function App() {
   const [timesUp, setTimesUp] = useState("idle");
+  const [taskAmount, setTaskAmount] = useState(4);
   const hanldeTimesrunStatus = (status) => {
     setTimesUp(status);
   };
+  const hanldeTaskAmount = (amount) => {
+    setTaskAmount(amount);
+  };
+
   return (
     <div className="App">
       <div className="App_namePart">
@@ -29,6 +34,7 @@ function App() {
       <div className="App_content">
         <TodoList
           hanldeTimesrunStatus={hanldeTimesrunStatus}
+          hanldeTaskAmount={hanldeTaskAmount}
           timesUp={timesUp}
           toast={toast}
         />
@@ -36,6 +42,7 @@ function App() {
           hanldeTimesrunStatus={hanldeTimesrunStatus}
           timesUp={timesUp}
           toast={toast}
+          taskAmount={taskAmount}
         />
         <RightNavbar />
         <ToastContainer />

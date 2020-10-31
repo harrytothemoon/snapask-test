@@ -4,7 +4,7 @@ import icon_cancle_counter from "../image/cancle.png";
 import icon_tomato_counter from "../image/tomatobig.svg";
 
 const Counter = (props) => {
-  const { hanldeTimesrunStatus, timesUp, toast } = props;
+  const { hanldeTimesrunStatus, timesUp, toast, taskAmount } = props;
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
@@ -30,6 +30,13 @@ const Counter = (props) => {
       toast.info("Please enter a time within 30 minutes!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "30-minutes",
+      });
+      return;
+    } else if (taskAmount === 0) {
+      hanldeTimesrunStatus("idle");
+      toast.info("Everything is done!", {
+        position: toast.POSITION.TOP_RIGHT,
+        toastId: "todo-length",
       });
       return;
     }
