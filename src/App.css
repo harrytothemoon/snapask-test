@@ -460,16 +460,21 @@ li {
   width: 40px;
 }
 
+.Toastify__toast {
+  max-height: 500px;
+  overflow-y: scroll;
+}
+
 .Toastify__toast-container {
-  width: auto !important;
+  width: auto;
 }
 
 .Toastify__toast--default {
-  cursor: default !important;
+  cursor: default;
 }
 
 .Toastify__toast--info {
   font-size: 24px;
-  background: #5856d6 !important;
-  border-radius: 1rem !important;
+  background: #5856d6;
+  border-radius: 1rem;
 }

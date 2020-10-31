@@ -8,7 +8,7 @@ const Counter = (props) => {
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
-
+  //TODO 判斷有代辦事項才能按開始
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {

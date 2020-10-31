@@ -35,17 +35,27 @@ const TodoList = (props) => {
   ];
   const [todo, setTodo] = useState(todos);
   const [addTodo, setAddTodo] = useState("");
+  const [ongoingIdex, setOngoingIdex] = useState(todo[0].id);
 
   useEffect(() => {
-    if (timesUp !== "over") return;
     let newTodo = [...todo];
-    newTodo[0].completed = true;
-    newTodo.push(newTodo.splice(0, 1)[0]);
+    if (timesUp === "start") {
+      setOngoingIdex(newTodo.findIndex((item) => item.completed === false));
+    }
+    if (timesUp !== "over") return;
+    newTodo[ongoingIdex].completed = true;
+    newTodo.push(newTodo.splice(ongoingIdex, 1)[0]);
     setTodo(newTodo);
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleCheckChange = (e, id) => {
     let targetIndex;
+    if (!e.checked && todo.filter((x) => !x.completed).length > 4) {
+      return toast.info("Please do not exceed five to-do tasks!", {
+        position: toast.POSITION.TOP_LEFT,
+        toastId: "exceed-five",
+      });
+    }
     let newTodo = [...todo].map((item, i) => {
       if (item.id === id) {
         item.completed = e.checked;
@@ -58,10 +68,10 @@ const TodoList = (props) => {
   };
 
   const handleChangeTask = (id) => {
-    hanldeTimesrunStatus("start");
     let newTodo = [...todo];
     let targetIndex = newTodo.findIndex((item) => item.id === id);
     newTodo.unshift(newTodo.splice(targetIndex, 1)[0]);
+    hanldeTimesrunStatus("start");
     setTodo(newTodo);
   };
 
@@ -99,7 +109,7 @@ const TodoList = (props) => {
     return;
   };
 
-  const Msg = () => (
+  const completedTask = () => (
     <div>
       <h1>Completed Task</h1>
       {todo
@@ -131,7 +141,7 @@ const TodoList = (props) => {
     </div>
   );
   const moreShow = () => {
-    toast(Msg, {
+    toast(completedTask, {
       transition: Zoom,
       autoClose: false,
       position: toast.POSITION.TOP_CENTER,
@@ -162,6 +172,7 @@ const TodoList = (props) => {
                   </label>
                   <button
                     className="todo_play"
+                    disabled={timesUp === "start" ? true : null}
                     style={{
                       cursor: timesUp === "start" ? "not-allowed" : "pointer",
                     }}
