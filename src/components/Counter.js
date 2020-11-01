@@ -6,12 +6,13 @@ import icon_stop_counter from "../image/stop.png";
 
 const Counter = (props) => {
   const { hanldeTimesrunStatus, timesUp, toast, taskAmount } = props;
-  const [mins, setMins] = useState(0);
+  const [mins, setMins] = useState(25);
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
   const [pauseTime, setaPauseTime] = useState(0);
   let timerId;
 
+  //點擊播放鍵
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {
@@ -51,6 +52,7 @@ const Counter = (props) => {
     hanldeTimesrunStatus("start");
   };
 
+  //點擊取消鍵
   const handleStop = () => {
     setTimerStatus("idle");
     hanldeTimesrunStatus("idle");
@@ -58,6 +60,15 @@ const Counter = (props) => {
     document.title = "Pomodor App";
   };
 
+  //點擊暫停鍵
+  const handleClickPause = () => {
+    let minutes = Number(time.split(":")[0]);
+    let seconds = Number(time.split(":")[1]);
+    setaPauseTime((minutes * 60 + seconds) / 60);
+    setTimerStatus("pause");
+  };
+
+  //渲染倒數時間
   const render = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = Math.round(totalSeconds % 60);
@@ -66,6 +77,7 @@ const Counter = (props) => {
     setTime(formatTime);
   };
 
+  //計算倒數時間
   const conter = (mins) => {
     render(mins * 60);
     const endTime = Date.now() + mins * 60 * 1000 + 1000;
@@ -90,6 +102,7 @@ const Counter = (props) => {
     }, 1000);
   };
 
+  //監聽時間狀態，將時間根據狀態計算
   useEffect(() => {
     if (timerStatus === "idle" || timerStatus === "pause") return;
     if (pauseTime) {
@@ -102,17 +115,11 @@ const Counter = (props) => {
     };
   }, [timerStatus]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  //監聽倒數狀態，讓todolist切換todo狀態
   useEffect(() => {
     if (timesUp !== "start") return;
     handleClickStart(mins);
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const handleClickPause = () => {
-    let minutes = Number(time.split(":")[0]);
-    let seconds = Number(time.split(":")[1]);
-    setaPauseTime((minutes * 60 + seconds) / 60);
-    setTimerStatus("pause");
-  };
 
   return (
     <div className="counter_container">
@@ -130,8 +137,8 @@ const Counter = (props) => {
             type="text"
             className="input_time_idle"
             placeholder="25"
+            value={mins}
             onChange={(e) => setMins(e.target.value)}
-            autoFocus
           />
           mins
         </div>

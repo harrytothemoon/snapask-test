@@ -3,6 +3,7 @@ import icon_play_todolist from "../image/play.png";
 import icon_plus_todolist from "../image/plus.png";
 import { v4 as uuidv4 } from "uuid";
 import { Flip } from "react-toastify";
+import todos from "../DummyData/dummy";
 
 const TodoList = (props) => {
   const {
@@ -12,53 +13,13 @@ const TodoList = (props) => {
     timesUp,
     toast,
   } = props;
-  const todos = [
-    {
-      id: uuidv4(),
-      title: "The First Thing To Do Today",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "The Second Thing To Do Today",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "The Third Thing To Do Today",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "The Forth Thing To Do Today",
-      completed: false,
-    },
-    {
-      id: uuidv4(),
-      title: "The Completed Thing To Do Today",
-      completed: true,
-    },
-  ];
+  //DummyData import as todos
   const [todo, setTodo] = useState(todos);
   const [addTodo, setAddTodo] = useState("");
   const [ongoingIdex, setOngoingIdex] = useState(todo[0].id);
   const [animationId, setAnimationId] = useState("idle");
 
-  useEffect(() => {
-    let newTodo = [...todo];
-    if (timesUp === "start") {
-      setOngoingIdex(newTodo.findIndex((item) => item.completed === false));
-    }
-    if (timesUp !== "over") return;
-    newTodo[ongoingIdex].completed = true;
-    newTodo.push(newTodo.splice(ongoingIdex, 1)[0]);
-    setTodo(newTodo);
-  }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  useEffect(() => {
-    hanldeTaskAmount(todo.filter((item) => !item.completed).length);
-  }, [todo]); // eslint-disable-line react-hooks/exhaustive-deps
-
+  //處理點擊todo動作
   const handleCheckChange = (e, id) => {
     let targetIndex;
     if (!e.checked && todo.filter((x) => !x.completed).length > 4) {
@@ -84,6 +45,7 @@ const TodoList = (props) => {
     }, 400);
   };
 
+  //處理點擊todo播放鍵且順序更換
   const handleChangeTask = (id) => {
     let newTodo = [...todo];
     let targetIndex = newTodo.findIndex((item) => item.id === id);
@@ -92,6 +54,7 @@ const TodoList = (props) => {
     setTodo(newTodo);
   };
 
+  //處理新增todo事項
   const handleAddInput = (value) => {
     if (todo.filter((x) => !x.completed).length > 4) {
       return toast.info("Please do not exceed five to-do tasks!", {
@@ -124,18 +87,20 @@ const TodoList = (props) => {
     setTodo(newTodo);
   };
 
+  //處理用enter新增
   const filterKey = (key) => {
     if (key === "Enter") return handleAddInput(addTodo);
     return;
   };
 
+  //Completed Modal欲顯示的資料
   const completedTask = () => (
     <div>
       <h1 className="completedTask_title">Completed Task</h1>
       {todo
         .map((todo) => {
           return todo.completed ? (
-            <div className="complete_item">
+            <div key={todo.id} className="complete_item">
               <input
                 id={"complete_content-" + todo.id}
                 className="complete_check"
@@ -161,6 +126,7 @@ const TodoList = (props) => {
     </div>
   );
 
+  //處理點擊Completed區More鍵
   const moreShow = () => {
     toast(completedTask, {
       transition: Flip,
@@ -173,14 +139,31 @@ const TodoList = (props) => {
     });
   };
 
+  //監聽倒數狀態更新todolist
+  useEffect(() => {
+    let newTodo = [...todo];
+    if (timesUp === "start") {
+      setOngoingIdex(newTodo.findIndex((item) => item.completed === false));
+    }
+    if (timesUp !== "over") return;
+    newTodo[ongoingIdex].completed = true;
+    newTodo.push(newTodo.splice(ongoingIdex, 1)[0]);
+    setTodo(newTodo);
+  }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  //監聽todolist數量，讓Counter做播放鍵判斷
+  useEffect(() => {
+    hanldeTaskAmount(todo.filter((item) => !item.completed).length);
+  }, [todo]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="todolist_container">
       <div className="todolist">
         <ul className="todolist_list">
           {todo.map((todo) => {
             return !todo.completed ? (
-              <li>
-                <div class="todo_item">
+              <li key={todo.id}>
+                <div className="todo_item">
                   <input
                     id={"todo_toggle-" + todo.id}
                     className="todo_toggle"
@@ -190,7 +173,7 @@ const TodoList = (props) => {
                   />
                   <label
                     className="todo_content"
-                    for={"todo_toggle-" + todo.id}
+                    htmlFor={"todo_toggle-" + todo.id}
                   >
                     <p
                       className={
@@ -251,7 +234,7 @@ const TodoList = (props) => {
         {todo
           .map((todo) => {
             return todo.completed ? (
-              <div className="complete_item">
+              <div key={todo.id} className="complete_item">
                 <input
                   id={"complete_content-" + todo.id}
                   className="complete_check"
@@ -261,7 +244,7 @@ const TodoList = (props) => {
                 />
                 <label
                   className="complete_content"
-                  for={"complete_content-" + todo.id}
+                  htmlFor={"complete_content-" + todo.id}
                 >
                   <p>{todo.title}</p>
                 </label>
