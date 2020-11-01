@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/snapask-test/static/css/main.31893433.chunk.css",
-    "main.js": "/snapask-test/static/js/main.89e03c3a.chunk.js",
-    "main.js.map": "/snapask-test/static/js/main.89e03c3a.chunk.js.map",
-    "runtime-main.js": "/snapask-test/static/js/runtime-main.a6536727.js",
-    "runtime-main.js.map": "/snapask-test/static/js/runtime-main.a6536727.js.map",
+    "main.css": "/snapask-test/static/css/main.d3207951.chunk.css",
+    "main.js": "/snapask-test/static/js/main.7cbdbb57.chunk.js",
+    "main.js.map": "/snapask-test/static/js/main.7cbdbb57.chunk.js.map",
+    "runtime-main.js": "/snapask-test/static/js/runtime-main.cb1a35cb.js",
+    "runtime-main.js.map": "/snapask-test/static/js/runtime-main.cb1a35cb.js.map",
     "static/css/2.ccc6f86f.chunk.css": "/snapask-test/static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.b9d780b5.chunk.js": "/snapask-test/static/js/2.b9d780b5.chunk.js",
-    "static/js/2.b9d780b5.chunk.js.map": "/snapask-test/static/js/2.b9d780b5.chunk.js.map",
-    "static/js/3.a3c355bf.chunk.js": "/snapask-test/static/js/3.a3c355bf.chunk.js",
-    "static/js/3.a3c355bf.chunk.js.map": "/snapask-test/static/js/3.a3c355bf.chunk.js.map",
+    "static/js/2.356f4a42.chunk.js": "/snapask-test/static/js/2.356f4a42.chunk.js",
+    "static/js/2.356f4a42.chunk.js.map": "/snapask-test/static/js/2.356f4a42.chunk.js.map",
+    "static/js/3.f9eed3e2.chunk.js": "/snapask-test/static/js/3.f9eed3e2.chunk.js",
+    "static/js/3.f9eed3e2.chunk.js.map": "/snapask-test/static/js/3.f9eed3e2.chunk.js.map",
     "index.html": "/snapask-test/index.html",
     "static/css/2.ccc6f86f.chunk.css.map": "/snapask-test/static/css/2.ccc6f86f.chunk.css.map",
-    "static/css/main.31893433.chunk.css.map": "/snapask-test/static/css/main.31893433.chunk.css.map",
-    "static/js/2.b9d780b5.chunk.js.LICENSE.txt": "/snapask-test/static/js/2.b9d780b5.chunk.js.LICENSE.txt",
+    "static/css/main.d3207951.chunk.css.map": "/snapask-test/static/css/main.d3207951.chunk.css.map",
+    "static/js/2.356f4a42.chunk.js.LICENSE.txt": "/snapask-test/static/js/2.356f4a42.chunk.js.LICENSE.txt",
     "static/media/tomato-title.aa35c13d.svg": "/snapask-test/static/media/tomato-title.aa35c13d.svg",
     "static/media/tomatobig.e413a386.svg": "/snapask-test/static/media/tomatobig.e413a386.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.a6536727.js",
+    "static/js/runtime-main.cb1a35cb.js",
     "static/css/2.ccc6f86f.chunk.css",
-    "static/js/2.b9d780b5.chunk.js",
-    "static/css/main.31893433.chunk.css",
-    "static/js/main.89e03c3a.chunk.js"
+    "static/js/2.356f4a42.chunk.js",
+    "static/css/main.d3207951.chunk.css",
+    "static/js/main.7cbdbb57.chunk.js"
   ]
 }
