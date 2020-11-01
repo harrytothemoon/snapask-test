@@ -8,7 +8,6 @@ const Counter = (props) => {
   const [mins, setMins] = useState("0");
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
-  //TODO 判斷有代辦事項才能按開始
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {
@@ -16,6 +15,7 @@ const Counter = (props) => {
       toast.info("Please enter a value greater than zero!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "greater-than-zero",
+        closeButton: false,
       });
       return;
     } else if (isNaN(minutes)) {
@@ -23,6 +23,7 @@ const Counter = (props) => {
       toast.info("Please enter a valid value!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "valid-value",
+        closeButton: false,
       });
       return;
     } else if (minutes > 30) {
@@ -30,6 +31,7 @@ const Counter = (props) => {
       toast.info("Please enter a time within 30 minutes!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "30-minutes",
+        closeButton: false,
       });
       return;
     } else if (taskAmount === 0) {
@@ -37,6 +39,7 @@ const Counter = (props) => {
       toast.info("Everything is done!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "todo-length",
+        closeButton: false,
       });
       return;
     }
@@ -73,6 +76,7 @@ const Counter = (props) => {
           toastId: "Times-up",
           autoClose: 2000,
           hideProgressBar: true,
+          closeButton: false,
         });
         setTimerStatus("idle");
         return;

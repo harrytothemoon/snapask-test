@@ -2,10 +2,16 @@ import React, { useState, useEffect } from "react";
 import icon_play_todolist from "../image/play.png";
 import icon_plus_todolist from "../image/plus.png";
 import { uuid } from "uuidv4";
-import { Zoom } from "react-toastify";
+import { Flip } from "react-toastify";
 
 const TodoList = (props) => {
-  const { hanldeTimesrunStatus, hanldeTaskAmount, timesUp, toast } = props;
+  const {
+    hanldeTimesrunStatus,
+    hanldeTaskAmount,
+    hanldeDisplayModal,
+    timesUp,
+    toast,
+  } = props;
   const todos = [
     {
       id: uuid(),
@@ -58,6 +64,7 @@ const TodoList = (props) => {
       return toast.info("Please do not exceed five to-do tasks!", {
         position: toast.POSITION.TOP_LEFT,
         toastId: "exceed-five",
+        closeButton: false,
       });
     }
     let newTodo = [...todo].map((item, i) => {
@@ -84,18 +91,21 @@ const TodoList = (props) => {
       return toast.info("Please do not exceed five to-do tasks!", {
         position: toast.POSITION.TOP_LEFT,
         toastId: "exceed-five",
+        closeButton: false,
       });
     }
     if (value.length > 25) {
       return toast.info("Please do not enter more than 25 characters!", {
         position: toast.POSITION.TOP_LEFT,
         toastId: "25-characters",
+        closeButton: false,
       });
     }
     if (value.length === 0) {
       return toast.info("Input value cannot be empty!", {
         position: toast.POSITION.TOP_LEFT,
         toastId: "value-empty",
+        closeButton: false,
       });
     }
     let newTodo = [...todo];
@@ -115,7 +125,7 @@ const TodoList = (props) => {
 
   const completedTask = () => (
     <div>
-      <h1>Completed Task</h1>
+      <h1 className="completedTask_title">Completed Task</h1>
       {todo
         .map((todo) => {
           return todo.completed ? (
@@ -147,11 +157,13 @@ const TodoList = (props) => {
 
   const moreShow = () => {
     toast(completedTask, {
-      transition: Zoom,
+      transition: Flip,
       autoClose: false,
       position: toast.POSITION.TOP_CENTER,
       toastId: "completed-item-all",
       closeOnClick: false,
+      onOpen: () => hanldeDisplayModal(true),
+      onClose: () => hanldeDisplayModal(false),
     });
   };
 

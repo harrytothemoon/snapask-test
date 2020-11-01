@@ -5,16 +5,21 @@ import TitlePic from "./image/tomato-title.svg";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Backdrop from "./components/Backdrop";
 import "./App.css";
 
 function App() {
   const [timesUp, setTimesUp] = useState("idle");
   const [taskAmount, setTaskAmount] = useState(4);
+  const [displayModal, setDisplayModal] = useState(false);
   const hanldeTimesrunStatus = (status) => {
     setTimesUp(status);
   };
   const hanldeTaskAmount = (amount) => {
     setTaskAmount(amount);
+  };
+  const hanldeDisplayModal = (status) => {
+    setDisplayModal(status);
   };
 
   return (
@@ -35,6 +40,7 @@ function App() {
         <TodoList
           hanldeTimesrunStatus={hanldeTimesrunStatus}
           hanldeTaskAmount={hanldeTaskAmount}
+          hanldeDisplayModal={hanldeDisplayModal}
           timesUp={timesUp}
           toast={toast}
         />
@@ -47,6 +53,7 @@ function App() {
         <RightNavbar />
         <ToastContainer />
       </div>
+      <Backdrop displayModal={displayModal} />
     </div>
   );
 }
