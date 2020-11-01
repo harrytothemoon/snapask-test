@@ -18,6 +18,26 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Import normalize.css: provides better cross-browser consistency in the default styling of HTML elements.
 - Cross-browser: Considering that FireFox does not support the pseudo elements of input tag (on going).
 
+## Key Features
+
+#### Timer
+
+- The timer has play, pause and cancel function.
+- The default value is 25 mins, and the user can also customize settings.
+
+#### Todolist (divided into to-do area and completion area)
+
+##### To-do area(Up to five to-do items):
+
+- User can choose the next item to be done, otherwise the default is the first item.
+- User can manually complete things by clicking.
+- User can add to-do items through "enter" or click the "+" button.
+
+##### Completion area:
+
+- Sort in descending order by completion time.
+- Click More to view all completed items.
+
 ## Available Scripts
 
 In the project directory, you can run:
