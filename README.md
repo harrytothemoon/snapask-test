@@ -38,6 +38,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Sort in descending order by completion time.
 - Click More to view all completed items.
 
+#### Future (Depends on product requirements)
+
+- Todolist can add delete and edit functions.
+- The limit on the number of to-do items can be updated.
+
 ## Available Scripts
 
 In the project directory, you can run:
