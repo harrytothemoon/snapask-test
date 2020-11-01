@@ -406,7 +406,8 @@ li {
   height: 100px;
 }
 
-.start_button {
+.start_button,
+.stop_button {
   background: transparent;
   border: none;
   position: absolute;
@@ -423,7 +424,8 @@ li {
   cursor: pointer;
 }
 
-.icon_play＿counter {
+.icon_play＿counter,
+.icon_stop_counter {
   width: 65px;
   border-radius: 100%;
 }

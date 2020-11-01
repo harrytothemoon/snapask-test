@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import icon_play＿counter from "../image/play.png";
 import icon_cancle_counter from "../image/cancle.png";
 import icon_tomato_counter from "../image/tomatobig.svg";
+import icon_stop_counter from "../image/stop.png";
 
 const Counter = (props) => {
   const { hanldeTimesrunStatus, timesUp, toast, taskAmount } = props;
-  const [mins, setMins] = useState("0");
+  const [mins, setMins] = useState(0);
   const [timerStatus, setTimerStatus] = useState("idle");
   const [time, setTime] = useState(0);
+  const [pauseTime, setaPauseTime] = useState(0);
+  let timerId;
+
   const handleClickStart = (min) => {
     const minutes = Number(min);
     if (minutes <= 0) {
@@ -50,6 +54,7 @@ const Counter = (props) => {
   const handleStop = () => {
     setTimerStatus("idle");
     hanldeTimesrunStatus("idle");
+    setaPauseTime(0);
     document.title = "Pomodor App";
   };
 
@@ -61,14 +66,14 @@ const Counter = (props) => {
     setTime(formatTime);
   };
 
-  useEffect(() => {
-    if (timerStatus === "idle") return;
+  const conter = (mins) => {
     render(mins * 60);
     const endTime = Date.now() + mins * 60 * 1000 + 1000;
-    let timerId = setInterval(() => {
+    timerId = setInterval(() => {
       const remainingSeconds = Math.floor((endTime - Date.now()) / 1000);
       if (remainingSeconds < 0) {
         document.title = "Pomodor App";
+        setaPauseTime(0);
         clearInterval(timerId);
         hanldeTimesrunStatus("over");
         toast.info("Time's up!", {
@@ -83,6 +88,15 @@ const Counter = (props) => {
       }
       render(remainingSeconds);
     }, 1000);
+  };
+
+  useEffect(() => {
+    if (timerStatus === "idle" || timerStatus === "pause") return;
+    if (pauseTime) {
+      conter(pauseTime);
+    } else {
+      conter(mins);
+    }
     return () => {
       clearInterval(timerId);
     };
@@ -92,6 +106,13 @@ const Counter = (props) => {
     if (timesUp !== "start") return;
     handleClickStart(mins);
   }, [timesUp]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleClickPause = () => {
+    let minutes = Number(time.split(":")[0]);
+    let seconds = Number(time.split(":")[1]);
+    setaPauseTime((minutes * 60 + seconds) / 60);
+    setTimerStatus("pause");
+  };
 
   return (
     <div className="counter_container">
@@ -110,12 +131,18 @@ const Counter = (props) => {
             className="input_time_idle"
             placeholder="25"
             onChange={(e) => setMins(e.target.value)}
+            autoFocus
           />
           mins
         </div>
         <div
           className="input_time_part"
-          style={{ display: timerStatus === "start" ? "block" : "none" }}
+          style={{
+            display:
+              timerStatus === "start" || timerStatus === "pause"
+                ? "block"
+                : "none",
+          }}
         >
           <div className="input_time_start">{time}</div>
         </div>
@@ -125,9 +152,9 @@ const Counter = (props) => {
         <button
           onClick={() => handleClickStart(mins)}
           className="start_button"
-          disabled={timerStatus === "start" ? true : null}
           style={{
             cursor: timerStatus === "start" ? "not-allowed" : "pointer",
+            display: timerStatus !== "start" ? "flex" : "none",
           }}
         >
           <img
@@ -137,6 +164,20 @@ const Counter = (props) => {
             style={{
               filter: timerStatus === "start" ? "grayscale(60%)" : null,
             }}
+          />
+        </button>
+        <button
+          onClick={() => handleClickPause()}
+          className="stop_button"
+          style={{
+            cursor: timerStatus === "start" ? "pointer" : "not-allowed",
+            display: timerStatus === "start" ? "flex" : "none",
+          }}
+        >
+          <img
+            src={icon_stop_counter}
+            className="icon_stop_counter"
+            alt="counter stop button"
           />
         </button>
         <button onClick={() => handleStop()} className="cancle_button">
