@@ -170,10 +170,14 @@ const TodoList = (props) => {
                     type="checkbox"
                     checked={animationId === `todo_toggle-${todo.id}`}
                     onChange={(e) => handleCheckChange(e.target, todo.id)}
+                    disabled={timesUp === "start" ? true : null}
                   />
                   <label
                     className="todo_content"
                     htmlFor={"todo_toggle-" + todo.id}
+                    style={{
+                      cursor: timesUp === "start" ? "not-allowed" : "pointer",
+                    }}
                   >
                     <p
                       className={
@@ -241,10 +245,14 @@ const TodoList = (props) => {
                   type="checkbox"
                   checked={animationId !== `complete_content-${todo.id}`}
                   onChange={(e) => handleCheckChange(e.target, todo.id)}
+                  disabled={timesUp === "start" ? true : null}
                 />
                 <label
                   className="complete_content"
                   htmlFor={"complete_content-" + todo.id}
+                  style={{
+                    cursor: timesUp === "start" ? "not-allowed" : "pointer",
+                  }}
                 >
                   <p>{todo.title}</p>
                 </label>
