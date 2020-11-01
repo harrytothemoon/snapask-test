@@ -12,7 +12,7 @@ const Counter = (props) => {
     const minutes = Number(min);
     if (minutes <= 0) {
       hanldeTimesrunStatus("idle");
-      toast.info("Please enter a value greater than zero!", {
+      toast.info("Please enter a time greater than zero!", {
         position: toast.POSITION.TOP_RIGHT,
         toastId: "greater-than-zero",
         closeButton: false,

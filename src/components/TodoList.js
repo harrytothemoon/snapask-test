@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import icon_play_todolist from "../image/play.png";
 import icon_plus_todolist from "../image/plus.png";
-import { uuid } from "uuidv4";
+import { v4 as uuidv4 } from "uuid";
 import { Flip } from "react-toastify";
 
 const TodoList = (props) => {
@@ -14,27 +14,27 @@ const TodoList = (props) => {
   } = props;
   const todos = [
     {
-      id: uuid(),
+      id: uuidv4(),
       title: "The First Thing To Do Today",
       completed: false,
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       title: "The Second Thing To Do Today",
       completed: false,
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       title: "The Third Thing To Do Today",
       completed: false,
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       title: "The Forth Thing To Do Today",
       completed: false,
     },
     {
-      id: uuid(),
+      id: uuidv4(),
       title: "The Completed Thing To Do Today",
       completed: true,
     },
@@ -42,6 +42,7 @@ const TodoList = (props) => {
   const [todo, setTodo] = useState(todos);
   const [addTodo, setAddTodo] = useState("");
   const [ongoingIdex, setOngoingIdex] = useState(todo[0].id);
+  const [animationId, setAnimationId] = useState("idle");
 
   useEffect(() => {
     let newTodo = [...todo];
@@ -67,15 +68,20 @@ const TodoList = (props) => {
         closeButton: false,
       });
     }
-    let newTodo = [...todo].map((item, i) => {
-      if (item.id === id) {
-        item.completed = e.checked;
-        targetIndex = i;
-      }
-      return item;
-    });
-    newTodo.push(newTodo.splice(targetIndex, 1)[0]);
-    setTodo(newTodo);
+    setAnimationId(e.id);
+    setTimeout(() => {
+      let newTodo = [...todo].map((item, i) => {
+        if (item.id === id) {
+          if (e.id.includes("complete_content")) item.completed = false;
+          if (e.id.includes("todo_toggle")) item.completed = true;
+          targetIndex = i;
+        }
+        return item;
+      });
+      newTodo.push(newTodo.splice(targetIndex, 1)[0]);
+      setTodo(newTodo);
+      setAnimationId("idle");
+    }, 400);
   };
 
   const handleChangeTask = (id) => {
@@ -110,7 +116,7 @@ const TodoList = (props) => {
     }
     let newTodo = [...todo];
     newTodo.push({
-      id: uuid(),
+      id: uuidv4(),
       title: value,
       completed: false,
     });
@@ -179,14 +185,22 @@ const TodoList = (props) => {
                     id={"todo_toggle-" + todo.id}
                     className="todo_toggle"
                     type="checkbox"
-                    checked={todo.completed}
+                    checked={animationId === `todo_toggle-${todo.id}`}
                     onChange={(e) => handleCheckChange(e.target, todo.id)}
                   />
                   <label
                     className="todo_content"
                     for={"todo_toggle-" + todo.id}
                   >
-                    <p>{todo.title}</p>
+                    <p
+                      className={
+                        animationId === `todo_toggle-${todo.id}`
+                          ? "complete_line-through"
+                          : null
+                      }
+                    >
+                      {todo.title}
+                    </p>
                   </label>
                   <button
                     className="todo_play"
@@ -242,7 +256,7 @@ const TodoList = (props) => {
                   id={"complete_content-" + todo.id}
                   className="complete_check"
                   type="checkbox"
-                  checked={todo.completed}
+                  checked={animationId !== `complete_content-${todo.id}`}
                   onChange={(e) => handleCheckChange(e.target, todo.id)}
                 />
                 <label

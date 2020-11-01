@@ -504,3 +504,7 @@ li {
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.complete_line-through {
+  text-decoration: line-through;
+}
